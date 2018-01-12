@@ -43,8 +43,7 @@
   ([x y]
    (same? x y equality-specs))
   ([x y specs]
-   (let [specs (when (not (sequential? specs)) [specs])
-         x (apply dissoc x specs)
+   (let [x (apply dissoc x specs)
          y (apply dissoc y specs)]
      (= x y))))
 ;;
