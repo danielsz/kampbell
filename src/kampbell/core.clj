@@ -51,19 +51,21 @@
 (defn get-coll [store coll-name]
  (k/get-in store [coll-name])) 
 
+(def get-entities get-coll)
+
 (defn save-coll [store coll-name coll]
   (k/assoc-in store [coll-name] coll))
 
 (defn delete-coll [store coll-name]
   (k/dissoc store coll-name))
 
-(defn update-entity [store coll v spec]
-  (if (s/valid? spec (spec v))
+(defn update-entity [store coll v specs]
+  (if (every? #(s/valid? % (% v)) specs)
     (k/update-in store [coll] (fn [coll]
-                                (reduce (fn [xs y] (if (same? v y spec)
+                                (reduce (fn [xs y] (if (same? v y specs)
                                                     (conj xs v)
                                                     (conj xs y))) [] coll)))
-    (throw (ex-info "Invalid input" (log/spy (s/explain-data spec (spec v)))))))
+    (throw (ex-info "Invalid input" (log/spy (some #(s/explain-data % (% v)) specs))))))
 
 (defn save-entity [store spec v]
   (if (s/valid? spec v)
