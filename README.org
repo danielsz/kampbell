@@ -24,7 +24,7 @@ In Kampbell, a collection (of entities) is structured as a vector of maps.  In t
 
 - All database transactions are validated by specs. You cannot persist bad data in the database. This is as good as your specs are.
 - Prior to inserting a new entry, Kampbell will check that it isn’t a duplicate. 
-- Updating an entry is only possible if you provide all the specs complementing modified fields.
+- Updating an entry is only possible if you provide all the specs complementing modified fields. This is by design: express your intent, and allow the software to validate it. 
 
 ** Installation 
 
@@ -69,8 +69,7 @@ Here is a reference implementation.
 
 ** Benchmarks
 
-The design goal of Kampbell is rapid prototyping, not performance. Optimizations are possible, but are not a priority at this point. If you’re interested in contributing your own benchmarks, we’ll be happy to publish or link to yours. 
-
+The design goal of Kampbell is rapid prototyping, not performance. Optimizations are possible, but are not a priority at this point. Due to the file-based nature of the persistence used, Kampbell will run circles around systems that persist date over the wire. Up to a certain a volume, that is. If you’re interested in contributing your own benchmarks, we’ll be happy to publish or link to yours. 
 
 ** Advanced
 
