@@ -1,0 +1,87 @@
+* Kampbell
+
+** Entity layer for Key value stores
+
+#+HTML: <img src="images/campbells.png" width="143" height="244" align="right"/>
+
+Kampbell is designed to persist entities on key-value stores. By entities we mean the units of a domain model in an application: the user, the product, the order, etc. Think of an entity as a row in a table.  
+
+The aim is avoiding the cognitive overhead of database integration in the early stages of application development, and yet be able to persist data. 
+  
+- no uuids
+- no query dsl
+- no drivers
+- no bindings
+- no dependencies
+
+Just plain ol’ data and the joy of manipulating it with functions from the core library.
+
+Kampbell has the potential to be a generic interface for multiple key-value store implementation, but currently consists of a single implementation on top of Konserve. Konserve is key-value database protocol that leverages the strengths of Clojure to offer a most [[https://github.com/replikativ/konserve#features][attractive proposition]]. 
+
+** Concepts
+
+In Kampbell, a collection (of entities) is structured as a vector of maps.  In the underlying key-value store, keys are names for the collection of entities (eg. users, products, orders), and values are the entities themselves (serialized vector of maps).
+
+- All database transactions are validated by specs. You cannot persist bad data in the database. This is as good as your specs are.
+- Prior to inserting a new entry, Kampbell will check that it isn’t a duplicate. 
+- Updating an entry is only possible if you provide all the specs complementing modified fields.
+
+** Installation 
+
+#+BEGIN_SRC clojure
+[org.danielsz/kampbell "0.1.2"]
+#+END_SRC
+
+** Usage
+
+The public API consists of the four operations: ~get-entity~, ~save-entity~, ~update-entity~ and ~delete-entity~. Additionally, to get the entire collection, use ~get-entities~.
+
+The test included in the current repository contains a basic implementation that demonstrate the capabilities of Kampbell.
+
+Here are our specs. 
+#+BEGIN_SRC clojure
+(s/def :domain.user/name string?)
+(s/def :domain.user/email (s/and string? #(re-matches #"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}" %)))
+(s/def :domain/user (s/keys :req [:domain.user/name
+                                  :domain.user/email]))
+#+END_SRC 
+
+Here is a reference implementation.
+
+#+BEGIN_SRC clojure
+(defn save-user [db v]
+  (let [v (assoc v :domain.utils/created-at (Instant/now))]
+    (<!! (k/save-entity db :domain/user v))))
+
+(defn get-users [db]
+  (<!! (k/get-entities db "users")))
+
+(defn get-user [db v]
+  (<!! (k/get-entity db "users" :domain.user/email v)))
+
+(defn update-user [db v & specs]
+  {:pre [(some? specs) (every? keyword? specs)]}
+  (<!! (k/update-entity db "users" v (into #{} specs))))
+
+(defn delete-user [db v]
+  (<!! (k/delete-entity db :domain/user v)))
+#+END_SRC
+
+** Benchmarks
+
+The design goal of Kampbell is rapid prototyping, not performance. Optimizations are possible, but are not a priority at this point. If you’re interested in contributing your own benchmarks, we’ll be happy to publish or link to yours. 
+
+
+** Advanced
+
+When you define the persistence layer in an application as an interface, you gain the freedom of swapping the particular implementation at any time. 
+
+#+BEGIN_SRC clojure
+(defprotocol MyApplication
+  "Persistence protocol for the application"
+  (get-users [db])
+  (get-user [db v])
+  (save-user [db v])
+  (update-user [db v specs])
+  (delete-user [db v])
+#+END_SRC
