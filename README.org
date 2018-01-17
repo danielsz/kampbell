@@ -1,10 +1,10 @@
 * Kampbell
 
-** Entity layer for Key value stores
+** Entity layer for key-value stores
 
 #+HTML: <img src="images/campbells.png" width="143" height="244" align="right"/>
 
-Kampbell is designed to persist entities on key-value stores. By entities we mean the units of a domain model in an application: the user, the product, the order, etc. Think of an entity as a row in a table.  
+Kampbell is designed to persist entities on top of key-value stores. By entities we mean the units of a domain model in an application: the user, the product, the order, etc. Think of an entity as a row in a table.  
 
 The aim is avoiding the cognitive overhead of database integration in the early stages of application development, and yet be able to persist data. 
   
