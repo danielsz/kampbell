@@ -8,8 +8,9 @@ Kampbell is designed to persist entities on top of key-value stores. By entities
 
 The aim is avoiding the cognitive overhead of database integration in the early stages of application development, and yet be able to persist data. 
   
+- no foreign keys
 - no uuids
-- no query dsl
+- no query DSL
 - no drivers
 - no bindings
 - no dependencies
