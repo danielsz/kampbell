@@ -19,6 +19,8 @@ Just plain ol’ data and the joy of manipulating it with functions from the cor
 
 Kampbell has the potential to be a generic interface for multiple key-value store implementation, but currently consists of a single implementation on top of Konserve. Konserve is key-value database protocol that leverages the strengths of Clojure to offer a most [[https://github.com/replikativ/konserve#features][attractive proposition]]. 
 
+The public API of Kampbell is compatible with Clojure/Clojurescript. Some additional functionality is currently Clojure-only.
+
 ** Concepts
 
 In Kampbell, a collection (of entities) is structured as a vector of maps.  In the underlying key-value store, keys are names for the collection of entities (eg. users, products, orders), and values are the entities themselves (serialized vector of maps).
