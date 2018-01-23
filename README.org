@@ -28,11 +28,7 @@ In Kampbell, a collection (of entities) is structured as a vector of maps.  In t
 - Updating an entry is only possible if you provide all the specs complementing modified fields. This is by design: express your intent, and allow the software to validate it. 
 
 ** Installation 
-
-#+BEGIN_SRC clojure
-[org.danielsz/kampbell "0.1.2"]
-#+END_SRC
-
+https://clojars.org/org.danielsz/kampbell/latest-version.svg
 ** Usage
 
 The public API consists of the four operations: ~get-entity~, ~save-entity~, ~update-entity~ and ~delete-entity~. Additionally, to get the entire collection, use ~get-entities~.

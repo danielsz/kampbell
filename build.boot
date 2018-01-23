@@ -16,7 +16,7 @@
 (task-options!
  push {:repo-map {:url "https://clojars.org/repo/"}}
  pom {:project 'org.danielsz/kampbell
-      :version "0.1.3-SNAPSHOT"
+      :version "0.1.3"
       :scm {:name "git"
             :url "https://github.com/danielsz/kampbell"}})
 
