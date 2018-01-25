@@ -17,7 +17,7 @@ The aim is avoiding the cognitive overhead of database integration in the early 
 
 Just plain ol’ data and the joy of manipulating it with functions from the core library.
 
-Kampbell has the potential to be a generic interface for multiple key-value store implementation, but currently consists of a single implementation on top of Konserve. Konserve is key-value database protocol that leverages the strengths of Clojure to offer a most [[https://github.com/replikativ/konserve#features][attractive proposition]]. 
+Kampbell has the potential to be a generic interface for multiple key-value store implementation, but currently consists of a single implementation on top of Konserve. Konserve is key-value database protocol that leverages the strengths of Clojure to offer a most [[https://github.com/replikativ/konserve#features][compelling proposition]]. 
 
 The public API of Kampbell is compatible with Clojure/Clojurescript. Some additional functionality is currently Clojure-only.
 
