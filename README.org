@@ -68,7 +68,7 @@ Here is a reference implementation.
 
 ** Benchmarks
 
-The design goal of Kampbell is rapid prototyping, not performance. Optimizations are possible, but are not a priority at this point. Due to the file-based nature of the persistence used, Kampbell will run circles around systems that persist date over the wire. Up to a certain a volume, that is. If you’re interested in contributing your own benchmarks, we’ll be happy to publish or link to yours. 
+The design goal of Kampbell is rapid prototyping, not performance. Optimizations are possible, but are not a priority at this point. Due to the file-based nature of the persistence used, Kampbell will run circles around systems that persist data over the wire. Up to a certain a volume, that is. If you’re interested in contributing your own benchmarks, we’ll be happy to publish or link to yours.
 
 ** Advanced
 
