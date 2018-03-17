@@ -24,9 +24,9 @@
      (defn delete-collections [store collections]
        (doseq [coll-name collections]
          (delete-coll store coll-name)))
-     (defn reset-db! [store]
+     (defn reset-db! [store collections]
          (delete-db! store)
-         (seed-db store))
+         (seed-db store collections))
      (defn copy-coll [store source target]
        (when-not (<!! (k/exists? store target))
          (let [coll (<!! (k/get-in store [source]))]
