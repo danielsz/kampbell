@@ -20,23 +20,23 @@
            (<!! (k/assoc-in store [coll-name] [])))))
      (defn delete-db! [store]
        (doseq [coll-name (list-collections store)]
-         (delete-coll store (first coll-name)))))
-   (defn delete-collections [store collections]
-     (doseq [coll-name collections]
-       (delete-coll store coll-name))
+         (delete-coll store (first coll-name))))
+     (defn delete-collections [store collections]
+       (doseq [coll-name collections]
+         (delete-coll store coll-name)))
      (defn reset-db! [store]
-       (delete-db! store)
-       (seed-db store)))
-   (defn copy-coll [store source target]
-     (when-not (<!! (k/exists? store target))
-       (let [coll (<!! (k/get-in store [source]))]
-         (<!! (k/assoc-in store [target] coll))))
+         (delete-db! store)
+         (seed-db store))
+     (defn copy-coll [store source target]
+       (when-not (<!! (k/exists? store target))
+         (let [coll (<!! (k/get-in store [source]))]
+           (<!! (k/assoc-in store [target] coll)))))
      (defn migrate-entity [store coll-name old-value new-value]
-       (let [coll (<!! (get-coll store coll-name))
-             new-coll (into [] (remove #(= old-value %) coll))
-             new-coll (conj new-coll new-value)]
-         (<!! (delete-coll store coll-name))
-         (<!! (save-coll store coll-name new-coll))))))
+         (let [coll (<!! (get-coll store coll-name))
+               new-coll (into [] (remove #(= old-value %) coll))
+               new-coll (conj new-coll new-value)]
+           (<!! (delete-coll store coll-name))
+           (<!! (save-coll store coll-name new-coll))))))
 ;;
 
 ;; utils
