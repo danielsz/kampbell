@@ -70,7 +70,6 @@
                    component/start)
         db (:store (:db system))]
     (is (some? db))
-    (is (= #{["users"]} (k/list-collections db)))
     (is (contains? kampbell.core/equality-specs :created-at))
     (is (contains? kampbell.core/equality-specs :domain.utils/created-at))
     (is (empty? (get-users db)))

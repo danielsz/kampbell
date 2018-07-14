@@ -3,11 +3,11 @@
  :resource-paths #{"src"}
  :dependencies '[[org.clojure/clojure "1.9.0"]
                  [org.clojure/core.async "0.4.474"]
-                 [org.clojure/tools.logging "0.4.0"]
+                 [org.clojure/tools.logging "0.4.1"]
                  [inflections "0.13.0"]
-                 [io.replikativ/konserve "0.4.11"]
+                 [io.replikativ/konserve "0.5.0-beta4"]
                  [org.danielsz/lang-utils "0.1.0"]
-                 [org.danielsz/maarschalk "0.1.0" :scope "test"]
+                 [org.danielsz/maarschalk "0.1.3-SNAPSHOT" :scope "test"]
                  [org.danielsz/system "0.4.2-SNAPSHOT" :scope "test"]
                  [adzerk/boot-test "1.2.0" :scope "test"]])
 
