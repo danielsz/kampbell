@@ -63,7 +63,8 @@
   (k/dissoc store coll-name))
 
 (defn update-entity [store coll v specs]
-  (if (every? #(s/valid? % (% v)) specs)
+  (if (every? #(or (nil? (% v))
+                   (s/valid? % (% v))) specs)
     (k/update-in store [coll] (fn [coll]
                                 (reduce (fn [xs y] (if (same? v y specs)
                                                     (conj xs v)
