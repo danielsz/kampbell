@@ -2,7 +2,7 @@
   (:require [konserve.core :as k]
             [konserve.filestore :as f]
             [inflections.core :refer [plural]]
-            [lang-utils.core :refer [seek p]]
+            [lang-utils.core :refer [seek]]
             [#?(:clj clojure.spec.alpha :cljs cljs.spec.alpha) :as s]
             #?(:clj [clojure.core.async :as a :refer [<!! <! go]])
             #?(:cljs [cljs.core.async   :as a :refer [<!]])))
@@ -75,7 +75,7 @@
   (if (s/valid? spec v)
     (go (let [entities (plural (name spec))
               coll (<! (k/get-in store [entities]))
-              exists? (p same? v)]
+              exists? (partial same? v)]
           (when-not (some exists? coll) 
             (save-coll store entities (conj coll v)))))
     (throw (ex-info "Invalid input" (s/explain-data spec v)))))
