@@ -35,7 +35,7 @@ In Kampbell, a collection (of entities) is structured as a vector of maps.  In t
 
 The public API consists of the four operations: ~get-entity~, ~save-entity~, ~update-entity~ and ~delete-entity~. Additionally, to get the entire collection, use ~get-entities~.
 
-The test included in the current repository contains a basic implementation that demonstrate the capabilities of Kampbell.
+The [[https://github.com/danielsz/kampbell/blob/master/test/kampbell/core_test.clj][test]] included in the current repository contains a basic implementation that demonstrate the capabilities of Kampbell.
 
 Here are our specs. 
 #+BEGIN_SRC clojure
@@ -68,7 +68,7 @@ Here is a reference implementation.
 
 ** Benchmarks
 
-The design goal of Kampbell is rapid prototyping, not performance. Optimizations are possible, but are not a priority at this point. Due to the file-based nature of the persistence used, Kampbell will run circles around systems that persist data over the wire. Up to a certain a volume, that is. If you’re interested in contributing your own benchmarks, we’ll be happy to publish or link to yours.
+The design goal of Kampbell is rapid prototyping, not performance. Optimizations are possible, but not a priority at this point. Because persistence is file-based, Kampbell will run circles around systems that persist data over the wire. Up to a certain a volume, that is. If you’re interested in contributing your own benchmarks, we’ll be happy to publish or link to yours.
 
 ** Advanced
 
