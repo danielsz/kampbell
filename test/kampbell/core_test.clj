@@ -8,8 +8,7 @@
             [maarschalk.konserve :as m]
             [clojure.spec.alpha :as s]
             [clojure.java.io :as io]
-            [clojure.test :as t :refer [use-fixtures deftest is testing]]
-            [clojure.tools.logging :as log])
+            [clojure.test :as t :refer [use-fixtures deftest is]])
   (:import [java.nio.file Files]
            [java.nio.file.attribute PosixFilePermissions FileAttribute]
            [java.nio.file Path Paths]
