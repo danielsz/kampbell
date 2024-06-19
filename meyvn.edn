@@ -1,12 +1,10 @@
 {:pom {:group-id "org.danielsz",
        :artifact-id "kampbell",
-       :version "0.1.9",
+       :version "0.2.0",
        :name "kampbell"},
  :build-properties {:project-build-sourceEncoding "UTF-8"},
  :packaging {:uberjar {:enabled false
                        :build-properties {:main-class "main.core"},
-                       :remote-repository {:id "ssh-repository",
-                                           :url "scpexe://user@domain:/home/.m2/repository"},
                        :excludes {:artifacts ["org.clojure:google-closure-library"],
                                   :filters ["META-INF/*.MF"
                                             "META-INF/*.SF"
