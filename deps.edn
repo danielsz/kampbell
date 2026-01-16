@@ -1,6 +1,6 @@
 {:deps {org.clojure/tools.logging {:mvn/version "1.3.0"}
         inflections/inflections {:mvn/version "0.14.2"}
-        io.replikativ/konserve {:mvn/version "0.7.315"}
+        io.replikativ/konserve {:mvn/version "0.5.1"}
         org.danielsz/lang-utils {:mvn/version "0.1.6"}
         org.danielsz/maarschalk {:mvn/version "0.1.4"}
         org.danielsz/system {:mvn/version "0.5.3"}
