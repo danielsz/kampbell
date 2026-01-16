@@ -1,6 +1,6 @@
 {:pom {:group-id "org.danielsz",
        :artifact-id "kampbell",
-       :version "0.2.0",
+       :version "0.2.1",
        :name "kampbell"},
  :build-properties {:project-build-sourceEncoding "UTF-8"},
  :packaging {:uberjar {:enabled false

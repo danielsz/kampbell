@@ -5,8 +5,8 @@
             [lang-utils.core :refer [seek]]
             [#?(:clj clojure.spec.alpha :cljs cljs.spec.alpha) :as s]
             #?(:clj [clojure.core.async :as a :refer [<!! <! go]])
-            #?(:cljs [cljs.core.async   :as a :refer [<!]])))
-  #?(:cljs (:require-macros [cljs.core.async.macros :refer [go]]))
+            #?(:cljs [cljs.core.async   :as a :refer [<!]]))
+  #?(:cljs (:require-macros [cljs.core.async.macros :refer [go]])))
 
 (declare save-coll delete-coll get-coll)
 ;; housekeeping
