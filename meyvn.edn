@@ -1,6 +1,6 @@
 {:pom {:group-id "org.danielsz",
        :artifact-id "kampbell",
-       :version "0.2.1",
+       :version "0.2.2",
        :name "kampbell"},
  :build-properties {:project-build-sourceEncoding "UTF-8"},
  :packaging {:uberjar {:enabled false
@@ -33,9 +33,7 @@
                                                           :foreign-libs [],
                                                           :main "main.core"},
                                           :tools-deps-alias :cljs}}},
-             :jar {:enabled true
-                   :remote-repository {:id "clojars",
-                                       :url "https://clojars.org/repo"}}},
+             :jar {:enabled true}},
  :testing {:enabled true, :tools-deps-alias :test},
  :scm {:enabled false},
  :interactive {:enabled false,
@@ -80,4 +78,5 @@
                                :port "1080",
                                :version "5",
                                :use-system-proxies false}}},
- :profiles {:enabled false}}
+ :profiles {:enabled false}
+ :distribution-management {:id "clojars", :url "https://clojars.org/repo"}}
